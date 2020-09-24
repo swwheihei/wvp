@@ -40,3 +40,6 @@ media:
 #   ip: 10.200.64.88
     ip: 192.168.0.102
     port: 10000
+
+log:
+    path: /app/lboss/pro/gb28181/logs

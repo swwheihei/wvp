@@ -5,6 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.sip.ClientTransaction;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**    
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VideoStreamSessionManager {
+	private static Logger log = LoggerFactory.getLogger(VideoStreamSessionManager.class);
 
 	private ConcurrentHashMap<String, ClientTransaction> sessionMap = new ConcurrentHashMap<>();
 
@@ -48,7 +51,7 @@ public class VideoStreamSessionManager {
 		while (true == col.contains(ssrc)) {
 			col.remove(ssrc);
 		}
-		System.out.println(deviceSessionMap);
+		log.debug(deviceSessionMap.toString());
 	}
 
 	public void putDevice(String deviceAndChannel,String ssrc){
