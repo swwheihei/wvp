@@ -1,6 +1,8 @@
 package com.genersoft.iot.vmp.gb28181.bean;
 
-public class DeviceChannel {
+import java.io.Serializable;
+
+public class DeviceChannel implements Serializable {
 
 	/**
 	 * 通道id

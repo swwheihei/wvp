@@ -1,5 +1,6 @@
 package com.genersoft.iot.vmp.gb28181.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**    
@@ -7,7 +8,7 @@ import java.util.List;
  * @author: swwheihei
  * @date:   2020年5月8日 下午2:05:56     
  */
-public class RecordInfo {
+public class RecordInfo implements Serializable {
 
 	private String deviceId;
 	
