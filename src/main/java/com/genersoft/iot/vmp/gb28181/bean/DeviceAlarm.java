@@ -1,6 +1,8 @@
 package com.genersoft.iot.vmp.gb28181.bean;
 
-public class DeviceAlarm {
+import java.io.Serializable;
+
+public class DeviceAlarm implements Serializable {
 
 	/**
 	 * 设备Id

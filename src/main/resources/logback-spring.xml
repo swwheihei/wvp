@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!-- 变量 -->
+	<!--定义日志保存的路径-->
+	<!--1.更改默认的logback.xml为logback-spring.xml
+		SpringBoot当看到logback-spring.xml文件存在的时候，才会启动日志的环境切换
+		logback.xml文件没法做到
+		2. 在需要切换的环境上增加springProfile标签
+	-->
+	
+	<springProperty scope="context" name="logPath" source="log.path" defaultValue="/" />
+	
+	<property name="LOG_HOME" value="${logPath}" />
+	<!-- <springProfile name="dev">
+	</springProfile>
+	<springProfile name="pro">
+		<property name="LOG_HOME" value="/app/lboss/logs" />
+	</springProfile>
+	<springProfile name="test">
+		<property name="LOG_HOME" value="/app/lboss/logs" />
+	</springProfile> -->
+	<!-- 日志文件保存路径 -->
+	<property name="filePath" value="${LOG_HOME}/gb28181.%d{yyyy-MM-dd}.log" />
+	<!-- 日志打印规则 -->
+	<property name="consolePattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%21thread] [%3line] %5level   gb28181[0]: %50logger{5} - %msg%n" />
+	
+	<!-- 控制台输出日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${consolePattern}</pattern>
+		</encoder>
+	</appender>
+	<!-- 输出到文件 -->
+	<appender name="DayFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${filePath}</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${consolePattern}</pattern>
+		</encoder>
+	</appender>
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="DayFile" />
+	</root>
+	<logger name="com.vizhuo">
+		<level value="DEBUG" />
+	</logger>
+</configuration>

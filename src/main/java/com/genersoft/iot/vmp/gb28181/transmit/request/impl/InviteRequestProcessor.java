@@ -3,6 +3,8 @@ package com.genersoft.iot.vmp.gb28181.transmit.request.impl;
 import javax.sip.RequestEvent;
 
 import com.genersoft.iot.vmp.gb28181.transmit.request.SIPRequestAbstractProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**    
  * @Description:处理INVITE请求
@@ -10,7 +12,7 @@ import com.genersoft.iot.vmp.gb28181.transmit.request.SIPRequestAbstractProcesso
  * @date:   2020年5月3日 下午4:43:52     
  */
 public class InviteRequestProcessor extends SIPRequestAbstractProcessor {
-
+	private static Logger log = LoggerFactory.getLogger(InviteRequestProcessor.class);
 	/**
 	 * 处理invite请求
 	 * 
@@ -29,7 +31,7 @@ public class InviteRequestProcessor extends SIPRequestAbstractProcessor {
 //			URI reqUri = request.getRequestURI();
 //			URI contactURI = currUser.get(reqUri);
 //
-//			System.out.println("processInvite rqStr=" + reqUri + " contact=" + contactURI);
+//			log.debug("processInvite rqStr=" + reqUri + " contact=" + contactURI);
 //
 //			// 根据Request uri来路由，后续的响应消息通过VIA来路由
 //			Request cliReq = messageFactory.createRequest(request.toString());
@@ -54,9 +56,9 @@ public class InviteRequestProcessor extends SIPRequestAbstractProcessor {
 //			clientTransactionId = sipProvider.getNewClientTransaction(cliReq);
 //			clientTransactionId.sendRequest();
 //
-//			System.out.println("processInvite clientTransactionId=" + clientTransactionId.toString());
+//			log.debug("processInvite clientTransactionId=" + clientTransactionId.toString());
 //
-//			System.out.println("send invite to callee: " + cliReq);
+//			log.debug("send invite to callee: " + cliReq);
 //		} catch (TransactionUnavailableException e1) {
 //			e1.printStackTrace();
 //		} catch (SipException e) {

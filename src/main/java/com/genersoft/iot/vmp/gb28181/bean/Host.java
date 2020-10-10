@@ -1,6 +1,8 @@
 package com.genersoft.iot.vmp.gb28181.bean;
 
-public class Host {
+import java.io.Serializable;
+
+public class Host implements Serializable {
 	
 	private String ip;
 	private int port;

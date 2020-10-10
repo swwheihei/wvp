@@ -1,9 +1,10 @@
 package com.genersoft.iot.vmp.gb28181.bean;
 
+import java.io.Serializable;
 import java.util.Map;
 
 
-public class Device {
+public class Device implements Serializable {
 
 	/**
 	 * 设备Id

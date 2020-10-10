@@ -223,7 +223,7 @@ public class SIPCommander implements ISIPCommander {
 	
 	        ClientTransaction transaction = transmitRequest(device, request);
 	        streamSession.put(ssrc, transaction);
-			return ssrc;
+            streamSession.putDevice("0"+device.getDeviceId()+channelId,ssrc);			return ssrc;
 		} catch ( SipException | ParseException | InvalidArgumentException e) {
 			e.printStackTrace();
 			return null;
@@ -271,6 +271,7 @@ public class SIPCommander implements ISIPCommander {
 	
 	        ClientTransaction transaction = transmitRequest(device, request);
 	        streamSession.put(ssrc, transaction);
+            streamSession.putDevice("1"+device.getDeviceId()+channelId,ssrc);
 			return ssrc;
 		} catch ( SipException | ParseException | InvalidArgumentException e) {
 			e.printStackTrace();
@@ -553,4 +554,19 @@ public class SIPCommander implements ISIPCommander {
 		return clientTransaction;
 	}
 
+	/**
+	 * 清除缓存的ssrc
+	 * @param ssrc
+	 */
+	public void remove(String ssrc){
+		streamSession.remove(ssrc);
+	}
+
+
+	public String getPlaySsrcByDevice(String deviceId,String channelId){
+		return streamSession.getSsrcByDevice("0"+deviceId+channelId);
+	}
+	/*public String getPlaybackSsrcByDevice(String deviceId,String channelId){
+		return streamSession.getSsrcByDevice("1"+deviceId+channelId);
+	}*/
 }
