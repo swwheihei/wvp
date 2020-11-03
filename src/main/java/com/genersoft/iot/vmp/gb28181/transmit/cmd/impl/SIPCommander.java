@@ -304,6 +304,7 @@ public class SIPCommander implements ISIPCommander {
 			Matcher matcher = p.matcher(vh);
 			if (matcher.find()) {
 				byeURI.setHost(matcher.group(1));
+				byeURI.setPort(Integer.parseInt(matcher.group(2)));
 			}
 			ViaHeader viaHeader = (ViaHeader) byeRequest.getHeader(ViaHeader.NAME);
 			String protocol = viaHeader.getTransport().toUpperCase();
