@@ -19,7 +19,7 @@
 		<hystrix.version>1.5.12</hystrix.version>
 		<!-- 依赖版本 -->
 		<mapper.version>3.4.0</mapper.version>
-		<mybatis.version>3.3.1</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybatis.spring.version>1.2.4</mybatis.spring.version>
 		<pagehelper.version>4.1.1</pagehelper.version>
 		<snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
